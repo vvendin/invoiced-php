@@ -18,6 +18,16 @@ class Client
     const CONNECT_TIMEOUT = 30;
     const READ_TIMEOUT = 60;
 
+    /**
+     * @deprecated
+     *
+     * @var CatalogItem
+     */
+    public $CatalogItem;
+
+    /** @var Coupon */
+    public $Coupon;
+
     /** @var Charge */
     public $Charge;
     /** @var Coupon */
@@ -89,6 +99,10 @@ class Client
     /** @var Webhook */
     public $Webhook;
 
+
+    /** @var Transaction */
+    public $Transaction;
+
     /** @var string */
     private $apiKey;
     /** @var bool */
@@ -128,6 +142,7 @@ class Client
         ]);
 
         // object endpoints
+        $this->CatalogItem = new CatalogItem($this);
         $this->Charge = new Charge($this);
         $this->Coupon = new Coupon($this);
         $this->CreditBalanceAdjustment = new CreditBalanceAdjustment($this);
@@ -163,6 +178,7 @@ class Client
         $this->TaxRule = new TaxRule($this);
         $this->Theme = new Theme($this);
         $this->Webhook = new Webhook($this);
+        $this->Transaction = new Transaction($this);
     }
 
     /**
